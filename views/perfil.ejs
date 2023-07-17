@@ -1,0 +1,49 @@
+<%- include ("templates/encabezado") %>
+<%- include ("templates/menulogin") %>
+<center><H1>HOLA</H1>
+<% if (tipousuario === 1) { %>
+  <H1>USUARI@</H1>
+<% } else if (tipousuario === 2) { %>
+  <H1>COMERCIANTE</H1>
+  <% } %></center>
+
+<form action="/perfil/<%=id%>/<%=usuario%>" method="post" id="formulario" class="row g-3 needs-validation m-5" novalidate>
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label">Nombre</label>
+      <input type="text" class="form-control" name="nombre" id="nombre" value="<%=nombre%>"  required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom02" class="form-label">Correo</label>
+      <input type="text" class="form-control" name="correo" id="correo" value="<%=correo%>"  required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustomUsername" class="form-label">Username</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="inputGroupPrepend">@</span>
+        <input type="text" class="form-control" name="usuario" id="usuario"  aria-describedby="inputGroupPrepend" value="<%=usuario%>" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+        <label for="ValidationPassword4" class="form-label">Password</label>
+      <input type="text" class="form-control" name="password" id="password" value="<%=password%>"  required>
+      <div class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Guardar</button>
+    </div>
+  </form>
+
+  <a href="/perfil/<%=id%>/<%=usuario%>/Eliminar">ELIMINAR</a>
+<%- include ("templates/pie") %>

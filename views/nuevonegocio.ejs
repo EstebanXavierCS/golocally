@@ -1,0 +1,47 @@
+<%- include ("templates/encabezado") %>
+<%- include ("templates/menulogin") %>
+<form action="/nuevonegocio/<%=id%>/<%=usuario%>" method="post" class="m-5">
+  <input hidden type="text" name="userId" id="userId" value="<%=id%>">
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre">
+      <div class="form-text">Ingresa el nombre de tu negocio</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Ubicación</label>
+      <input type="text" class="form-control" id="ubicacion" name="ubicacion">
+      <div class="form-text">Ingresa la ubicación de tu negocio</div>
+    </div>
+    <div class="mb-3">
+        <div class="mb-3">
+            <label class="form-label">Telefono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono">
+            <div class="form-text">Ingresa un numero de telefono para que te conozcan</div>
+          </div>
+        <label class="form-label">Descripcion</label>
+        <input type="text" class="form-control" id="descripcion" name="descripcion">
+        <div class="form-text">Hablame de que trata tu negocio</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Productos</label>
+        <input type="text" class="form-control" id="producto" name="producto">
+        <div class="form-text">Describeme brevemente los productos que vendes</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">imagen</label>
+        <input type="text" class="form-control" id="imagen" name="imagen">
+        <div class="form-text">Envia el link de tu imagen</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">instagram</label>
+        <input type="text" class="form-control" id="instagram" name="instagram">
+        <div class="form-text">Dejanos el link de tu instagram</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Facebook</label>
+        <input type="text" class="form-control" id="facebook" name="facebook">
+        <div class="form-text">Dejanos el link de tu Facebook</div>
+      </div>
+    <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+<%- include ("templates/pie") %>
