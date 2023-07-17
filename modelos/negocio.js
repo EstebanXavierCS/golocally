@@ -30,7 +30,15 @@ module.exports = (conexion) => {
     },
     facebook: {
       type: Sequelize.STRING,
-    }
+    },
+    idUsuario:{
+      type: Sequelize.INTEGER,
+      references: {
+        model: "parent_table",
+        key: "id"
+    },
+    onDelete: "NO ACTION"
+  }
   });
 
   return NegocioSchema;

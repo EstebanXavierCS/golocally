@@ -1,4 +1,0 @@
-<%- include ("templates/encabezado") %>
-<%- include ("templates/menulogin") %>
-<h1>BIENVENIDO Usuario <%=usuario%></h1>
-<%- include ("templates/pie") %>
