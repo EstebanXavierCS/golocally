@@ -23,9 +23,6 @@ var conexion = new Sequelize(db, usuario, password, {
 var Usuario = UsuarioModelo(conexion);
 var Negocio = NegocioModelo(conexion);
 
-Usuario.hasMany(Negocio, { foreignKey: "userId", onDelete: "CASCADE" });
-Negocio.belongsTo(Usuario, { foreignKey: "userId", onDelete: "CASCADE" });
-
 conexion
   .sync({ force: false })
   .then(() => {
