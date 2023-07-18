@@ -42,4 +42,18 @@
       </div>
     </div>
   </div>
+
+  <h1>Explorar negocios</h1>
+  <ul>
+    <% negocios.forEach((negocio) => { %>
+      <li>
+        <h2><%= negocio.nombre %></h2>
+        <p>Ubicación: <%= negocio.ubicacion %></p>
+        <p>Teléfono: <%= negocio.telefono %></p>
+        <p>Descripción: <%= negocio.descripcion %></p>
+        <!-- Otros datos del negocio -->
+      </li>
+    <% }); %>
+  </ul>
+
 <%- include ("templates/pie") %>

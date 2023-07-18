@@ -12,7 +12,18 @@ ruta.get("/inicioRegistro", (req, res) => {
 
 
 ruta.get("/Explorar", (req, res) => {
-  res.render("explorar");
+
+  Negocio.findAll({
+    attributes: ['nombre', 'ubicacion', 'telefono', 'descripcion']
+  })
+  .then((negocios) => {
+    res.render("explorar",{negocios});
+  })
+  .catch((error) => {
+    console.log("Error: " + error);
+  });
+
+
 });
 
 
@@ -156,31 +167,122 @@ ruta.get("/perfil/:id/:usuario/Eliminar", (req, res) => {
 ruta.get("/explorar/:id/:usuario", (req, res) => {
   const id = req.params.id;
   const usuario = req.params.usuario;
-  res.render("explorarusu",{ id:id,usuario:usuario });
+
+  Negocio.findAll({
+    attributes: ['nombre', 'ubicacion', 'telefono', 'descripcion']
+  })
+  .then((negocios) => {
+    res.render("explorarusu",{ id:id,usuario:usuario, negocios});
+  })
+  .catch((error) => {
+    console.log("Error: " + error);
+  });
+
 });
 
 ruta.get("/nuevo/:id/:usuario", (req, res) => {
   const id = req.params.id;
   const usuario = req.params.usuario;
+
   res.render("nuevonegocio",{ id:id,usuario:usuario });
 });
 
+var negocios = [];
 
 
 ruta.post("/nuevonegocio/:id/:usuario", (req, res) => {
   const id = req.params.id;
   const usuario = req.params.usuario;
-  const idUsuario = req.body.usuarioId;
-  req.body.usuarioId = idUsuario;
-    console.log(req.body);
-    Negocio.create(req.body)
-    .then(() => {
-      res.redirect(`/explorar/${id}/${usuario}`);
+  const idUsuario = req.body.userid;
+  req.body.userid = idUsuario;
+  Negocio.findOne({ where: { userid: idUsuario } })
+    .then((existente) => {
+      if (existente) {
+        console.log("Ya existe un negocio asociado a este usuario.");
+        res.redirect(`/explorar/${id}/${usuario}`);
+      } else {
+        Negocio.create(req.body)
+          .then((negocio) => {
+            negocios.push(negocio);
+            res.redirect(`/explorar/${id}/${usuario}`);
+          })
+          .catch((error) => {
+            console.log("Error al crear el negocio: " + error);
+            res.redirect(`/explorar/${id}/${usuario}`);
+          });
+      }
     })
-    .catch(error => {
-      console.log("error"+error);
+    .catch((error) => {
+      console.log("Error al buscar el negocio existente: " + error);
+      res.redirect(`/explorar/${id}/${usuario}`);
     });
 });
+
+ruta.get("/perfilnegocio/:id/:usuario", (req, res) => {
+  const id = req.params.id;
+  const usuario = req.params.usuario;
+
+  Negocio.findOne({ where: { userid: id } })
+    .then((perfiln) => {
+      if (perfiln) {
+        res.render("perfilnegocio", { negocio: perfiln, id: id, usuario: usuario });
+      } else {
+        res.send("El perfil no existe");
+      }
+    })
+    .catch((error) => {
+      res.send("Error al obtener el perfil");
+    });
+});
+
+
+ruta.post("/perfilnegocio/:id/:usuario", (req, res) => {
+  const id = req.params.id;
+  const usuario = req.params.usuario;
+
+  const actualizarDatos = {
+    nombre: req.body.nombre,
+    ubicacion: req.body.ubicacion,
+    telefono: req.body.telefono,
+    descripcion: req.body.descripcion,
+    productos: req.body.productos,
+    imagen: req.body.imagen,
+    instagram: req.body.instagram,
+    facebook: req.body.facebook,
+  };
+
+  Negocio.update(actualizarDatos, { where: { userid: id } })
+    .then((result) => {
+      if (result[0] === 0) {
+        res.send("El perfil no existe");
+      } else {
+        res.redirect(`/perfilnegocio/${id}/${usuario}`);
+      }
+    })
+    .catch((error) => {
+      res.send("Error al actualizar el perfil");
+    });
+});
+
+
+ruta.get("/perfilnegocio/:id/:usuario/Eliminar", (req, res) => {
+  const id = req.params.id;
+  const usuario = req.params.usuario;
+
+  Negocio.destroy({ where: { userid: id } })
+    .then((result) => {
+      if (result === 0) {
+        res.send("El perfil no existe");
+      } else {
+        res.redirect(`/explorar/${id}/${usuario}`);
+      }
+    })
+    .catch((error) => {
+      res.send("Error al eliminar el perfil");
+    });
+});
+
+
 
 
 module.exports = ruta;

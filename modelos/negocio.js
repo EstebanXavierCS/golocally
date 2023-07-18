@@ -7,6 +7,9 @@ module.exports = (conexion) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    userid: {
+      type: Sequelize.INTEGER,
+    },
     nombre: {
       type: Sequelize.STRING,
     },
@@ -30,16 +33,7 @@ module.exports = (conexion) => {
     },
     facebook: {
       type: Sequelize.STRING,
-    },
-    idUsuario:{
-      type: Sequelize.INTEGER,
-      references: {
-        model: "parent_table",
-        key: "id"
-    },
-    onDelete: "NO ACTION"
-  }
+    }
   });
-
   return NegocioSchema;
 };

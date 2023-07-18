@@ -1,47 +1,48 @@
 <%- include ("templates/encabezado") %>
 <%- include ("templates/menulogin") %>
-<form action="/nuevonegocio/<%=id%>/<%=usuario%>" method="post" class="m-5">
-  <input hidden type="text" name="userid" id="userid" value="<%=id%>">
+<form action="/perfilnegocio/<%=id%>/<%=usuario%>" method="post" class="m-5">
+  <input hidden type="text" name="userId" id="userId" value="<%=id%>">
     <div class="mb-3">
       <label class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="nombre" name="nombre">
+      <input type="text" class="form-control" id="nombre" name="nombre" value="<%=negocio.nombre%>">
       <div class="form-text">Ingresa el nombre de tu negocio</div>
     </div>
     <div class="mb-3">
       <label class="form-label">Ubicación</label>
-      <input type="text" class="form-control" id="ubicacion" name="ubicacion">
+      <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="<%=negocio.ubicacion%>">
       <div class="form-text">Ingresa la ubicación de tu negocio</div>
     </div>
     <div class="mb-3">
         <div class="mb-3">
             <label class="form-label">Telefono</label>
-            <input type="text" class="form-control" id="telefono" name="telefono">
+            <input type="text" class="form-control" id="telefono" name="telefono" value="<%=negocio.telefono%>">
             <div class="form-text">Ingresa un numero de telefono para que te conozcan</div>
           </div>
         <label class="form-label">Descripcion</label>
-        <input type="text" class="form-control" id="descripcion" name="descripcion">
+        <input type="text" class="form-control" id="descripcion" name="descripcion" value="<%=negocio.descripcion%>">
         <div class="form-text">Hablame de que trata tu negocio</div>
       </div>
       <div class="mb-3">
         <label class="form-label">Productos</label>
-        <input type="text" class="form-control" id="productos" name="productos">
+        <input type="text" class="form-control" id="productos" name="productos" value="<%=negocio.productos%>">
         <div class="form-text">Describeme brevemente los productos que vendes</div>
       </div>
       <div class="mb-3">
         <label class="form-label">imagen</label>
-        <input type="text" class="form-control" id="imagen" name="imagen">
+        <input type="text" class="form-control" id="imagen" name="imagen" value="<%=negocio.imagen%>">
         <div class="form-text">Envia el link de tu imagen</div>
       </div>
       <div class="mb-3">
         <label class="form-label">instagram</label>
-        <input type="text" class="form-control" id="instagram" name="instagram">
+        <input type="text" class="form-control" id="instagram" name="instagram" value="<%=negocio.instagram%>">
         <div class="form-text">Dejanos el link de tu instagram</div>
       </div>
       <div class="mb-3">
         <label class="form-label">Facebook</label>
-        <input type="text" class="form-control" id="facebook" name="facebook">
+        <input type="text" class="form-control" id="facebook" name="facebook" value="<%=negocio.facebook%>">
         <div class="form-text">Dejanos el link de tu Facebook</div>
       </div>
-    <button type="submit" class="btn btn-primary">Agregar</button>
+    <button type="submit" class="btn btn-primary">CAMBIAR</button>
+    <a href="/perfilnegocio/<%=id%>/<%=usuario%>/Eliminar">ELIMINAR</a>
 </form>
 <%- include ("templates/pie") %>

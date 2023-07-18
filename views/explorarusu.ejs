@@ -2,45 +2,19 @@
 <%- include ("templates/menulogin") %>
   <center><a href="/nuevo/<%=id%>/<%=usuario%>"><button type="button" class="btn btn-danger">Agregar</button></a></center>
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+    <% negocios.forEach((negocio) => { %>
+      <div class="col">
+        <div class="card h-100">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= negocio.nombre %></h5>
+            <p class="card-text">Ubicación: <%= negocio.ubicacion %><br>
+                                 Teléfono: <%= negocio.telefono %><br>
+                                 Descripción: <%= negocio.descripcion %><br></p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a short card.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
+    <% }); %>
   </div>
 <%- include ("templates/pie") %>
