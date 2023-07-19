@@ -1,7 +1,15 @@
 <%- include ("templates/encabezado") %>
 <%- include ("templates/menulogin") %>
-  <center><a href="/nuevo/<%=id%>/<%=usuario%>">
-    <button type="button" class="btn btn-danger">Agregar</button></a></center>
+<div class="mas">
+ <a href="/nuevo/<%=id%>/<%=usuario%>">
+    <button type="button" class="btn btn-danger ms-5">Nuevo</button></a>
+    <div class="container-fluid">
+      <form class="d-flex">
+        <input class="form-control me-2 w-25 mx-auto" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
 <div class="boxcard">
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% negocios.forEach((negocio) => { %>
@@ -9,12 +17,13 @@
         <div class="card h-100 w-75">
           <img src="<%=negocio.imagen%>" class="card-img-top img-fluid h-100" alt="...">
           <div class="card-body">
+            <p hidden><%=negocio.userid%></p>
             <p hidden><%=negocio.id%></p>
             <h5 class="card-title"><%= negocio.nombre %></h5>
             <p class="card-text">Ubicación: <%= negocio.ubicacion %><br>
                                  Teléfono: <%= negocio.telefono %><br>
                                  Descripción: <%= negocio.descripcion %><br></p>
-            <a href="/negocio/<%= negocio.id %>" class="btn btn-primary">Visitar</a>
+            <a href="/negocio/<%= negocio.id %>" class="btn btn-outline-info">Visitar</a>
           </div>
         </div>
       </div>

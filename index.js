@@ -1,7 +1,8 @@
 var express = require("express");
 var path = require("path");
 var usuarioRutas = require("./rutas/usuario");
-const session = require("express-session");
+const session = require("cookie-session");
+//const session = require("express-session");
 require("dotenv").config();
 
 var app = express();
@@ -11,11 +12,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", usuarioRutas);
 app.use(
   session({
-    secret: process.env.SECRETO_SESSION,
+    name:'session',
+    keys:[process.env.SECRETO_SESSION]
+   /* secret: process.env.SECRETO_SESSION,
     resave: true,
     saveUninitialized: true,
-  })
-);
+    */
+  }));
 
 var port = process.env.PORT || 3000;
 

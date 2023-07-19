@@ -19,9 +19,6 @@ module.exports = (conexion) => {
     password: {
       type: Sequelize.STRING,
     },
-    tipousuario: {
-      type: Sequelize.INTEGER,
-    },
     status: {
       type: Sequelize.TINYINT,
       default: 1,

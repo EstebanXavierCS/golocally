@@ -203,8 +203,7 @@ Usuario.findByPk(id)
         const nom=perfil.nombre;
         const corr=perfil.correo;
         const pass=perfil.password;
-        const tip=perfil.tipousuario;
-        res.render("perfil", { id: id,nombre:nom,correo:corr,usuario: usuario,password:pass,tipousuario:tip});
+        res.render("perfil", { id: id,nombre:nom,correo:corr,usuario: usuario,password:pass});
       } else {
         res.send("El perfil no existe");
       }
@@ -224,7 +223,6 @@ ruta.post("/perfil/:id/:usuario", (req, res) => {
     nombre: req.body.nombre,
     correo: req.body.correo,
     password: req.body.password,
-    tipousuario: req.body.tipousuario,
   };
 
   Usuario.update(nuevosDatos, {
@@ -262,7 +260,7 @@ ruta.get("/explorar/:id/:usuario", (req, res) => {
   const usuario = req.params.usuario;
 
   Negocio.findAll({
-    attributes: ['id','nombre','imagen','ubicacion', 'telefono', 'descripcion']
+    attributes: ['id','nombre','userid','imagen','ubicacion', 'telefono', 'descripcion']
   })
   .then((negocios) => {
     res.render("explorarusu",{ id:id,usuario:usuario, negocios});
@@ -287,6 +285,12 @@ ruta.post("/nuevonegocio/:id/:usuario", (req, res) => {
   const id = req.params.id;
   const usuario = req.params.usuario;
   const idUsuario = req.body.userid;
+
+  if (!req.body.nombre || !req.body.ubicacion || !req.body.telefono || !req.body.descripcion) {
+    console.log("Por favor, complete todos los campos.");
+    return;
+  }
+
   req.body.userid = idUsuario;
   Negocio.findOne({ where: { userid: idUsuario } })
     .then((existente) => {
@@ -311,6 +315,7 @@ ruta.post("/nuevonegocio/:id/:usuario", (req, res) => {
     });
 });
 
+
 ruta.get("/perfilnegocio/:id/:usuario", (req, res) => {
   const id = req.params.id;
   const usuario = req.params.usuario;
@@ -320,7 +325,7 @@ ruta.get("/perfilnegocio/:id/:usuario", (req, res) => {
       if (perfiln) {
         res.render("perfilnegocio", { negocio: perfiln, id: id, usuario: usuario });
       } else {
-        res.send("El perfil no existe");
+        res.redirect("back");
       }
     })
     .catch((error) => {
