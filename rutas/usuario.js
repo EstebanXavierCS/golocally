@@ -14,7 +14,7 @@ ruta.get("/inicioRegistro", (req, res) => {
 ruta.get("/Explorar", (req, res) => {
 
   Negocio.findAll({
-    attributes: ['id','nombre', 'ubicacion', 'telefono', 'descripcion']
+    attributes: ['id','nombre','imagen','ubicacion', 'telefono', 'descripcion']
   })
   .then((negocios) => {
     res.render("explorar",{negocios});
@@ -262,7 +262,7 @@ ruta.get("/explorar/:id/:usuario", (req, res) => {
   const usuario = req.params.usuario;
 
   Negocio.findAll({
-    attributes: ['id','nombre', 'ubicacion', 'telefono', 'descripcion']
+    attributes: ['id','nombre','imagen','ubicacion', 'telefono', 'descripcion']
   })
   .then((negocios) => {
     res.render("explorarusu",{ id:id,usuario:usuario, negocios});

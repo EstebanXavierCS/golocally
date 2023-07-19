@@ -1,3 +1,64 @@
-<p class="card-text">Ubicación: <%= negocio.ubicacion %><br>
-                                 Teléfono: <%= negocio.telefono %><br>
-                                 Descripción: <%= negocio.descripcion %><br></p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagina Producto</title>
+    <link rel="stylesheet" href="/web/css/estilosprod.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container-img">
+        <img
+          src="<%= negocio.imagen %>"
+          alt="imagen-producto"
+        />
+      </div>
+      <div class="container-info-product">
+        <div class="container-price">
+          <span><%= negocio.nombre %></span>
+        </div>
+
+        <div class="container-details-product">
+          <div class="form-group">
+            <label for="colour">Ubicacion</label>
+            <div class="container-price">
+              <span><%= negocio.ubicacion %></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="size">Telefono</label>
+            <div class="container-price">
+              <span><%= negocio.telefono %></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-description">
+          <div class="title-description">
+            <h4>Descripción</h4>
+          </div>
+          <div class="text-description">
+            <p><%= negocio.descripcion %></p>
+          </div>
+        </div>
+
+        <div class="container-social">
+          <span>Redes Sociales</span>
+          <div class="container-buttons-social">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://kit.fontawesome.com/81581fb069.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+  </body>
+</html>

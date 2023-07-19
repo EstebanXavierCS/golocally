@@ -1,21 +1,24 @@
 <%- include ("templates/encabezado") %>
 <%- include ("templates/menulogin") %>
-  <center><a href="/nuevo/<%=id%>/<%=usuario%>"><button type="button" class="btn btn-danger">Agregar</button></a></center>
-<div class="row row-cols-1 row-cols-md-3 g-4">
+  <center><a href="/nuevo/<%=id%>/<%=usuario%>">
+    <button type="button" class="btn btn-danger">Agregar</button></a></center>
+<div class="boxcard">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
     <% negocios.forEach((negocio) => { %>
       <div class="col">
-        <div class="card h-100">
-          <img src="..." class="card-img-top" alt="...">
+        <div class="card h-100 w-75">
+          <img src="<%=negocio.imagen%>" class="card-img-top img-fluid h-100" alt="...">
           <div class="card-body">
             <p hidden><%=negocio.id%></p>
             <h5 class="card-title"><%= negocio.nombre %></h5>
             <p class="card-text">Ubicación: <%= negocio.ubicacion %><br>
                                  Teléfono: <%= negocio.telefono %><br>
                                  Descripción: <%= negocio.descripcion %><br></p>
-            <a href="/negocio/<%= negocio.id %>" class="btn btn-primary">Go somewhere</a>
+            <a href="/negocio/<%= negocio.id %>" class="btn btn-primary">Visitar</a>
           </div>
         </div>
       </div>
     <% }); %>
   </div>
+</div>
 <%- include ("templates/pie") %>
