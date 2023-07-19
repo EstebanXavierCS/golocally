@@ -1,0 +1,71 @@
+<%- include ("templates/encabezado") %>
+<a href="/">salir</a>
+  <h1>Datos de las Tablas</h1>
+  
+  <h2>Tabla 1</h2>
+  <table class="table table-sm">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>CORREO</th>
+            <th>USUARIO</th>
+            <th>PASSWORD</th>
+            <th>TIPOUSUARO</th>
+            <th>ACCIONES</th>
+            <!-- Agrega aquí las columnas adicionales según tu tabla -->
+          </tr>
+    </thead>
+    <tbody>
+      <% Usuario.forEach((dato) => { %>
+        <tr>
+            <td><%= dato.id %></td>
+            <td><%= dato.nombre %></td>
+            <td><%= dato.correo %></td>
+            <td><%= dato.usuario %></td>
+            <td><%= dato.password %></td>
+            <td><%= dato.tipousuario %></td>
+            <td><a href="/borrarUsuario/<%= dato.id %>">BORRAR</a> / <a href="/ModificarUsuario/<%= dato.id %>">MODIFICAR</a></td>
+          </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  
+  <h2>Tabla 2</h2>
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ID USUARIO</th>
+        <th>NOMBRE</th>
+        <th>UBICACION</th>
+        <th>TELEFONO</th>
+        <th>DESCRIPCION</th>
+        <th>PRODUCTOS</th>
+        <th>IMAGEN</th>
+        <th>INSTAGRAM</th>
+        <th>FACEBOOK</th>
+        <th>BORRAR/EDITAR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Negocio.forEach((dato) => { %>
+        <tr>
+            <td><%= dato.id %></td>
+            <td><%= dato.userid %></td>
+            <td><%= dato.nombre %></td>
+            <td><%= dato.ubicacion %></td>
+            <td><%= dato.telefono %></td>
+            <td><%= dato.descripcion %></td>
+            <td><%= dato.productos %></td>
+            <td><%= dato.imagen %></td>
+            <td><%= dato.instagram %></td>
+            <td><%= dato.facebook %></td>
+            <td><a href="/ModificarNegocio/<%= dato.id %>">MODIFICAR</a></td>
+          </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+
+  <%- include ("templates/pie") %>

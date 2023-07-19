@@ -7,11 +7,12 @@
         <div class="card h-100">
           <img src="..." class="card-img-top" alt="...">
           <div class="card-body">
+            <p hidden><%=negocio.id%></p>
             <h5 class="card-title"><%= negocio.nombre %></h5>
             <p class="card-text">Ubicación: <%= negocio.ubicacion %><br>
                                  Teléfono: <%= negocio.telefono %><br>
                                  Descripción: <%= negocio.descripcion %><br></p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="/negocio/<%= negocio.id %>" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
       </div>

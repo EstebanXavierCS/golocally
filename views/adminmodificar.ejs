@@ -1,0 +1,28 @@
+<%- include ("templates/encabezado") %>
+<form class="m-5" action="/modificarUsuario" method="post">
+<div class="mb-3">
+    <input  hidden type="text" class="form-control" id="id" name="id" value="<%=dato.id%>" placeholder="id"  >
+    <label for="formGroupExampleInput" class="form-label">NOMBRE</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" value="<%=dato.nombre%>" placeholder="Nombre"  >
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">CORREO</label>
+    <input type="text" class="form-control" id="correo" name="correo" value="<%=dato.correo%>"placeholder="Correo">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">USUARIO</label>
+    <input type="text" class="form-control"  id="usuario" name="usuario" value="<%=dato.usuario%>" placeholder="Usuario">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">PASSWORD</label>  
+    <input type="text" class="form-control"  id="password" name="password" value="<%=dato.password%>" placeholder="password">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">TIPOUSUARO</label>
+    <input type="text" class="form-control" id="tipousuario" name="tipousuario" value="<%=dato.tipousuario%>" placeholder="Tipousuario">
+  </div>
+
+  <button class="btn btn-primary" type="submit">Modificar</button>
+</form>
+<%- include ("templates/pie") %>
+  

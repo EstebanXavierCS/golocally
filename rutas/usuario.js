@@ -14,7 +14,7 @@ ruta.get("/inicioRegistro", (req, res) => {
 ruta.get("/Explorar", (req, res) => {
 
   Negocio.findAll({
-    attributes: ['nombre', 'ubicacion', 'telefono', 'descripcion']
+    attributes: ['id','nombre', 'ubicacion', 'telefono', 'descripcion']
   })
   .then((negocios) => {
     res.render("explorar",{negocios});
@@ -60,6 +60,94 @@ ruta.get("/inicioSesion", (req, res) => {
 });
 
 
+ruta.get("/admin", (req, res) => {
+  Usuario.findAll()
+  .then((Usuario) => {
+    Negocio.findAll()
+      .then((Negocio) => {
+        res.render("admin", { Usuario: Usuario, Negocio: Negocio });
+      })
+      .catch((error) => {
+        console.log("Error al obtener los datos de la tabla 2: " + error);
+        res.redirect("/");
+      });
+  })
+  .catch((error) => {
+    console.log("Error al obtener los datos de la tabla 1: " + error);
+    res.redirect("/");
+  });
+});
+
+
+
+ruta.get("/borrarUsuario/:id", (req, res) => {
+  const userId = req.params.id;
+  Usuario.destroy({ where: { id: userId } })
+    .then(() => {
+      Negocio.destroy({ where: { userid: userId } })
+        .then(() => {
+          console.log("Usuario y tabla asociada eliminados correctamente");
+          res.redirect("/admin");
+        })
+        .catch((error) => {
+          console.log("Error al eliminar la tabla asociada: " + error);
+          res.redirect("/admin");
+        });
+    })
+    .catch((error) => {
+      console.log("Error al eliminar el usuario: " + error);
+      res.redirect("/admin");
+    });
+});
+
+
+ruta.get("/ModificarUsuario/:id", (req, res) => {
+  Usuario.findByPk(req.params.id)
+    .then((dato) => {
+      res.render("adminmodificar", { dato: dato });
+    })
+    .catch((error) => {
+      console.log("Error al obtener el dato de la tabla 1 para editar: " + error);
+      res.redirect("/admin");
+    });
+});
+
+ruta.post("/modificarUsuario", (req, res) => {
+  Usuario.update(req.body,{where:{id:req.body.id}})
+  .then(()=>{
+    res.redirect("/admin");
+  })
+  .catch((err)=>{
+    console.log("Error......."+err);
+    res.redirect("/admin");
+  })
+});
+
+ruta.get("/ModificarNegocio/:id", (req, res) => {
+  Negocio.findByPk(req.params.id)
+    .then((dato) => {
+      res.render("adminmodificar2", { dato: dato });
+    })
+    .catch((error) => {
+      console.log("Error al obtener el dato de la tabla 1 para editar: " + error);
+      res.redirect("/admin");
+    });
+});
+
+ruta.post("/modificarNegocio", (req, res) => {
+  Negocio.update(req.body,{where:{id:req.body.id}})
+  .then(()=>{
+    res.redirect("/admin");
+  })
+  .catch((err)=>{
+    console.log("Error......."+err);
+    res.redirect("/admin");
+  })
+});
+
+
+
+
 ruta.post("/inicioSesion", (req, res) => {
   const { correo, password,  } = req.body;
 
@@ -68,13 +156,18 @@ ruta.post("/inicioSesion", (req, res) => {
     return;
   }
 
-  const user = Usuario.findOne({ where: { correo: correo,password:password}})
+  const user = Usuario.findOne({ where: { correo: correo, password: password } })
     .then((user) => {
       if (!user) {
         console.log("Credenciales de inicio de sesión incorrectas");
         return;
       }
-      res.redirect(`/inicio/${user.id}/${user.usuario}`);
+
+      if (user.correo === "admin@gmail.com" && user.password === "12345") {
+        res.redirect("/admin");
+      } else {
+        res.redirect(`/inicio/${user.id}/${user.usuario}`);
+      }
     })
     .catch((err) => {
       console.log("error" + err);
@@ -169,7 +262,7 @@ ruta.get("/explorar/:id/:usuario", (req, res) => {
   const usuario = req.params.usuario;
 
   Negocio.findAll({
-    attributes: ['nombre', 'ubicacion', 'telefono', 'descripcion']
+    attributes: ['id','nombre', 'ubicacion', 'telefono', 'descripcion']
   })
   .then((negocios) => {
     res.render("explorarusu",{ id:id,usuario:usuario, negocios});
@@ -279,6 +372,23 @@ ruta.get("/perfilnegocio/:id/:usuario/Eliminar", (req, res) => {
     })
     .catch((error) => {
       res.send("Error al eliminar el perfil");
+    });
+});
+
+ruta.get("/negocio/:id", (req, res) => {
+  const idNegocio = req.params.id;
+  Negocio.findOne({ where: { id: idNegocio } })
+    .then((negocio) => {
+      if (negocio) {
+        res.render("negocio", { negocio: negocio });
+      } else {
+        console.log("No se encontró el negocio con el ID proporcionado.");
+        res.redirect(`/explorar/${id}/${usuario}`);
+      }
+    })
+    .catch((error) => {
+      console.log("Error al buscar el negocio: " + error);
+      res.redirect("/explorar");
     });
 });
 

@@ -1,0 +1,40 @@
+<%- include ("templates/encabezado") %>
+<form class="m-5" action="/modificarNegocio" method="post">
+<div class="mb-3">
+    <input  hidden type="text" class="form-control" id="id" name="id" value="<%=dato.id%>" placeholder="id"  >
+    <input  hidden type="text" class="form-control" id="userid" name="userid" value="<%=dato.userid%>" placeholder="id"  >
+    <label for="formGroupExampleInput" class="form-label">NOMBRE</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" value="<%=dato.nombre%>" placeholder="Nombre"  >
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">UBICACION</label>
+    <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="<%=dato.ubicacion%>"placeholder="Ubicacion">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">TELEFONO</label>
+    <input type="text" class="form-control"  id="telefono" name="telefono" value="<%=dato.telefono%>" placeholder="Telefono">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">DESCRIPCION</label>  
+    <input type="text" class="form-control"  id="descripcion" name="descripcion" value="<%=dato.descripcion%>" placeholder="Descripcion">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">PRODUCTOS</label>
+    <input type="text" class="form-control" id="productos" name="productos" value="<%=dato.productos%>" placeholder="Productos">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">IMAGEN</label>
+    <input type="text" class="form-control" id="imagen" name="imagen" value="<%=dato.imagen%>" placeholder="Imagen">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">INSTAGRAM</label>
+    <input type="text" class="form-control" id="instagram" name="instagram" value="<%=dato.instagram%>" placeholder="Instagram">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">FACEBOOK</label>
+    <input type="text" class="form-control" id="facebook" name="facebook" value="<%=dato.facebook%>" placeholder="Facebook">
+  </div>
+  <button class="btn btn-primary" type="submit">Modificar</button>
+</form>
+<%- include ("templates/pie") %>
+  
