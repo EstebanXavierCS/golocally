@@ -23,8 +23,7 @@ var conexion = new Sequelize(db, usuario, password, {
 var Usuario = UsuarioModelo(conexion);
 var Negocio = NegocioModelo(conexion);
 
-conexion
-  .sync({ force: false })
+conexion.sync({ force: false })
   .then(() => {
     console.log("conectado a mysql");
   })
