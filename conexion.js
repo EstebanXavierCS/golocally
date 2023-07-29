@@ -9,16 +9,15 @@ var password = process.env.PASSWORD_MYSQL_REMOTO;
 var host = process.env.HOST_MYSQL_REMOTO;
 var port = process.env.PORT_MYSQL_REMOTO;
 
-var conexion = new Sequelize(db, usuario, password, {
-  host: host,
-  port: port,
-  dialect: "mysql",
-  dialectOptions:{
-    ssl:{
-      rejectUnauthorized:true
-    }
+var conexion = new Sequelize(db,usuario,password,{
+  host:host,
+  port:port,
+  dialect:"mysql",
+  dialectOptions: {
+      ssl:{
+          rejectUnauthorized: true
+      }
   }
-
 });
 
 var Usuario = UsuarioModelo(conexion);
