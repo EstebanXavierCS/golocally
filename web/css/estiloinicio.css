@@ -1,0 +1,259 @@
+.icono{
+    width: 50px;
+    height: 50px;
+    margin-left: 700px;
+}
+.fondo{
+    width: 100%;
+    max-width: 100%;
+    height: 85.7vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.fondo img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.bienvenido{
+    position: absolute;
+    background-color: white;
+    height: 300px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 50px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.bienvenido h1{
+    font-family: sans-serif;
+    margin-top: 60px;
+}
+.bienvenido h2{
+    margin-top: 15px;
+    font-size: 13px;
+    font-family: sans-serif;
+}
+.buscar{
+    margin-top: 8px;
+    width: 250px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contenedor-imagen {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+.img{
+    width: 100%;
+}
+.capa-opacidad {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Color de fondo con opacidad 50% */
+}
+.contenido-centrado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: aliceblue;
+}
+.contenido-centrado p{
+    font-size: 20px;
+}
+.contenido-centrado h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+}
+
+.cont-menu{
+    width: 100%;
+    height: 700px;
+    background-color: white;
+    display: block;
+}
+.cont-menu h1{
+    display: flex;
+    justify-content: center;
+    color: black;
+    margin-top: 50px;
+}
+.cont-op1{
+    display: flex;
+    width: 75%;
+    height: 300px;
+    margin-left: 200px;
+    margin-top: 50px;
+}
+.neg1{
+    background-color: black;
+    width: 48%;
+    height: 250px;
+    display: flex;
+}
+.neg1 img{
+    width: 50%;
+    height: 100%;
+}
+.neg1 div{
+    background-color: aliceblue;
+    width: 50%;
+    height: 100%;
+}
+.neg1 h6{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+.neg1 p{
+    margin: 0;
+    margin-left: 30px;
+    font-size: 17px;
+
+}
+.neg1 button{
+    margin-left: 30px;
+    margin-top: 25px;
+    background-color: black;
+    width: 100px;
+    border-radius: 5px;
+    color: #ffffff;    
+}
+.neg2{
+    background-color: blue;
+    width: 48%;
+    height: 250px;
+    margin-left: 40px;
+    display: flex;
+}
+.neg2 img{
+    width: 50%;
+    height: 100%;
+}
+.neg2 div{
+    background-color: aliceblue;
+    width: 50%;
+    height: 100%;
+}
+.neg2 h6{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+.neg2 p{
+    margin: 0;
+    margin-left: 30px;
+    font-size: 17px;
+
+}
+.neg2 button{
+    margin-left: 30px;
+    margin-top: 25px;
+    background-color: black;
+    width: 100px;
+    border-radius: 5px;
+    color: #ffffff;    
+}
+
+
+
+
+
+.cont-op2{
+    display: flex;
+    width: 75%;
+    height: 300px;
+    margin-left: 200px;
+}
+.neg3{
+    background-color: black;
+    width: 48%;
+    height: 250px;
+    display: flex;
+}
+.neg3 img{
+    width: 50%;
+    height: 100%;
+}
+.neg3 div{
+    background-color: aliceblue;
+    width: 50%;
+    height: 100%;
+}
+.neg3 h6{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+.neg3 p{
+    margin: 0;
+    margin-left: 30px;
+    font-size: 17px;
+
+}
+.neg3 button{
+    margin-left: 30px;
+    margin-top: 25px;
+    background-color: black;
+    width: 100px;
+    border-radius: 5px;
+    color: #ffffff;    
+}
+
+
+.neg4{
+    background-color: blue;
+    width: 48%;
+    height: 250px;
+    margin-left: 40px;
+    display: flex;
+}
+.neg4 img{
+    width: 50%;
+    height: 100%;
+}
+.neg4 div{
+    background-color: aliceblue;
+    width: 50%;
+    height: 100%;
+}
+.neg4 h6{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+.neg4 p{
+    margin: 0;
+    margin-left: 30px;
+    font-size: 17px;
+
+}
+.neg4 button{
+    margin-left: 30px;
+    margin-top: 25px;
+    background-color: black;
+    width: 100px;
+    border-radius: 5px;
+    color: #ffffff;    
+}
+
+
