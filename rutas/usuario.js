@@ -397,6 +397,25 @@ ruta.get("/negocio/:id", (req, res) => {
     });
 });
 
+ruta.get("/negocio/:idNegocio/:id/:usuario", (req, res) => {
+  const idNegocio = req.params.idNegocio;
+  const id = req.params.id;
+  const usuario = req.params.usuario; 
+  Negocio.findOne({ where: { id: idNegocio } })
+    .then((negocio) => {
+      if (negocio) {
+        res.render("negociousu", { id:idNegocio,id:id,usuario:usuario,negocio: negocio });
+      } else {
+        console.log("No se encontró el negocio con el ID proporcionado.");
+        res.redirect(`/explorar/${id}/${usuario}`);
+      }
+    })
+    .catch((error) => {
+      console.log("Error al buscar el negocio: " + error);
+      res.redirect("/explorar");
+    });
+});
+
 
 
 
